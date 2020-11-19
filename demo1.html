@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <body>
+        <div class='wrapper'>
+
+        </div>
+    </body>
+</body>
+<script>
+    class LikeButton {
+        render() {
+            return `
+        <button id='like-btn'>
+          <span class='like-text'>赞</span>
+          <span>👍</span>
+        </button>
+      `
+        }
+    }
+
+    const wrapper = document.querySelector('.wrapper')
+    const LikeButton1 = new LikeButton()
+    wrapper.innerHTML = LikeButton1.render();
+    const LikeButton2 = new LikeButton()
+    wrapper.innerHTML += LikeButton2.render();
+
+
+    // 此时没有js事件  没有添加点击事件  
+</script>
+
+</html>

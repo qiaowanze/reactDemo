@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <body>
+        <div class='wrapper'>
+
+        </div>
+    </body>
+</body>
+<script>
+    const domString = (domData) => {
+        const div = document.createElement('div')
+        div.innerHTML = domData;
+        return div;
+    }
+    class LikeButton {
+        constructor() {
+            this.state = {
+                isLiked: false
+            }
+        }
+        setState(state) {
+            console.log(state)
+            const oldel = this.el;
+            this.state = state;
+            this.el = this.render()
+            console.log(this.onStateChange)
+            if (this.onStateChange) this.onStateChange(oldel, this.el)
+        }
+
+        changeLikeText() {
+            console.log("执行")
+            this.setState({
+                isLiked: !this.state.isLiked
+            })
+        }
+        render() {
+            this.el = domString(`
+        <button id='like-btn'>
+          <span class='like-text'>${this.state.isLiked ? "取消":"点赞"}</span>
+          <span>👍</span>
+        </button>
+      `)
+
+            this.el.addEventListener('click', this.changeLikeText.bind(this), false)
+            return this.el;
+        }
+    }
+
+    const wrapper = document.querySelector('.wrapper')
+    const LikeButton1 = new LikeButton()
+    wrapper.appendChild(LikeButton1.render()) // 第一次插入dom元素
+
+    LikeButton1.onStateChange = (oldel, newel) => {
+        wrapper.insertBefore(newel, oldel)
+        wrapper.removeChild(oldel)
+    }
+
+
+    // 在demo3 中 我们优化了dom操作 但此时 点击按钮是没有任何更新发生的 因为我们更新的dom并没有立即更新到页面中 需要写一个判断 当dom更新时 我们提醒页面也发生更新 
+    // 现在更改一下setState的逻辑
+</script>
+
+</html>
