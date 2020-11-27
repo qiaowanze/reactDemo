@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import Button from './components/likeButton/Likebutton'
 import List from './components/list/List'
+import Time from './components/time/Time'
+import AutoFocusInput from './components/autofocus/AutoFocusInput'
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -100,7 +102,21 @@ class Footer extends Component {
   }
 }
 class Header extends Component {
+  constructor() {
+    super()
+    console.log('constructor')
+  }
+  componentWillMount() {
+    console.log('componentWillMount')
+  }
+  componentDidMount() {
+    console.log('componentDidMount')
+  }
+  componentWillUnmount() {
+    console.log('component will unmount')
+  }
   render() {
+    console.log("render")
     const word = "xiaoqiao"
     const classname = "header"
     return (
@@ -134,9 +150,37 @@ const users = [
   { username: 'Lucy', age: 20, gender: 'female' }
 ]
 class Index extends Component {
+  constructor() {
+    super()
+    this.state = {
+      isShowHeader: true,
+      isShowClock: true
+    }
+  }
+
+  handleShowOrHide() {
+    this.setState({
+      isShowHeader: !this.state.isShowHeader
+    })
+  }
+
+  handleShowHide() {
+    this.setState({
+      isShowClock: !this.state.isShowClock
+    })
+  }
+
   render() {
     return (
       <div>
+        {this.state.isShowClock ? <Time /> : null}
+        <button onClick={this.handleShowHide.bind(this)}>
+          显示或隐藏时钟
+        </button>
+        {this.state.isShowHeader ? <Header /> : null}
+        <button onClick={this.handleShowOrHide.bind(this)}>
+          显示或者隐藏标题
+        </button>
         <Button likedText="已赞" unlikedText="赞"
           onClick={this.handleClick.bind(this)}
         />
@@ -160,6 +204,7 @@ class Index extends Component {
 
 ReactDOM.render(
   <div>
+    <AutoFocusInput />
     <Header />
     <Index />
   </div>,
