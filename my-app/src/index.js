@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
+import App from './App'
 import Button from './components/likeButton/Likebutton'
 import List from './components/list/List'
 import Time from './components/time/Time'
@@ -204,6 +205,7 @@ class Index extends Component {
 
 ReactDOM.render(
   <div>
+    <App />
     <AutoFocusInput />
     <Header />
     <Index />
