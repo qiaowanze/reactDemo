@@ -5,9 +5,7 @@ import CommentApp from './comment/CommentApp'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <CommentApp />
-  </React.StrictMode>,
+  <CommentApp />,
   document.getElementById('root')
 );
 
