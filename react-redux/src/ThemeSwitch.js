@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from './react-redux'
+// import { connect } from './react-redux'
+
+// 使用真正的redux react-redux  
+import { connect } from 'react-redux'
 class ThemeSwitch extends Component {
     // static contextTypes = {
     //     store: PropTypes.object

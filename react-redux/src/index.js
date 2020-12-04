@@ -3,22 +3,30 @@ import ReactDOM from 'react-dom';
 import Header from './Header'
 import Content from './Content'
 import './index.css'
-import reportWebVitals from './reportWebVitals';
-import { Provider } from './react-redux'
+import reportWebVitals from './reportWebVitals'
+// import { Provider } from './react-redux'
+
+
+// 使用真正的redux react-redux  
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+// 使用已经配置好的createStore
+
+
 
 //创建createStore
-function createStore(reducer) {
-  let state = null
-  const listeners = []
-  const subscribe = (listener) => listeners.push(listener)
-  const getState = () => state
-  const dispatch = (action) => {
-    state = reducer(state, action)
-    listeners.forEach((listener) => listener())
-  }
-  dispatch({})
-  return { subscribe, getState, dispatch }
-}
+// function createStore(reducer) {
+//   let state = null
+//   const listeners = []
+//   const subscribe = (listener) => listeners.push(listener)
+//   const getState = () => state
+//   const dispatch = (action) => {
+//     state = reducer(state, action)
+//     listeners.forEach((listener) => listener())
+//   }
+//   dispatch({})
+//   return { subscribe, getState, dispatch }
+// }
 
 const themeReducer = (state, action) => {
   if (!state) return {
