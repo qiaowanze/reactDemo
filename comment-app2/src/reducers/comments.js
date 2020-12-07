@@ -7,6 +7,8 @@ export default function (state, action) {
     if (!state) {
         state = { comments: [] }
     }
+    console.log('state=======>', state)
+    console.log('action=======>', action)
     switch (action.type) {
         case INIT_COMMENTS:
             // 初始化评论
