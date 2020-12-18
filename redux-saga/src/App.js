@@ -11,15 +11,14 @@ class App extends Component {
   render() {
     const { isFetch, error, user } = this.props.users;
 
-    let data = "";
+    let data = []
     if (isFetch) {
       console.log(isFetch)
-      data = '正在加载中。。。'
+      data = [{ name: '正在加载中。。。' }]
     } else if (user) {
-      console.log(user)
-      data = user.data[0]['name'];
+      console.log(user.data)
+      data = user.data;
     } else if (error) {
-      console.log(user)
       data = error.message;
     }
     return (
@@ -33,7 +32,9 @@ class App extends Component {
           &nbsp;&nbsp;&nbsp;
           <button onClick={() => this.props.fetch_user()}>axios请求</button>
         </div>
-        <h2>{data}</h2>
+        {data.map((item, i) => {
+          return <h2 key={i}>{item['name']}</h2>
+        })}
       </div>
     );
   }

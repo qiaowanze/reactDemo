@@ -7,10 +7,10 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux'; // 中间件和store
 import { Provider } from 'react-redux'; // provider
 import { composeWithDevTools } from 'redux-devtools-extension'; // 调试工具
-import rootReducer from './reducers'; // reducers
+import rootReducer from './reducers/index'; // reducers
 
 import createSagaMiddleware from 'redux-saga'; // 1：saga引入createSagaMiddleware
-import rootSaga from './sagas'; // 5：自己写的根rootSaga
+import rootSaga from './sagas/index'; // 5：自己写的根rootSaga
 
 
 // 2：创建saga中间件
@@ -23,7 +23,9 @@ const store = createStore(
   )
 )
 
-// 4：启动saga
+console.log(store)
+
+// 4：启动saga 就是在redux数据流中加了一层处理 对action进行监听 捕获到监听的action之后 派发一个新的任务对state进行维护
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
